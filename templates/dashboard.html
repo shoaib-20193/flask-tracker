@@ -36,15 +36,6 @@ body {
 </div>
 
 <div class="card">
-<h3>Countries</h3>
-<ul>
-{% for c in stats.countries %}
-<li>{{ c[0] }} - {{ c[1] }}</li>
-{% endfor %}
-</ul>
-</div>
-
-<div class="card">
 <h3>Visitor IPs</h3>
 <ul>
 {% for ip in stats.ips %}
