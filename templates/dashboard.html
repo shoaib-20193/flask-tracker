@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f2f2f7;
+    padding: 30px;
+}
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Dashboard: {{ track_id }}</h1>
+
+<div class="grid">
+    <div class="card">Visitors: {{ stats.visitors }}</div>
+    <div class="card">Sessions: {{ stats.sessions }}</div>
+    <div class="card">Events: {{ stats.events }}</div>
+    <div class="card">Avg Duration: {{ stats.avg_duration }} sec</div>
+    <div class="card">Bounce Rate: {{ stats.bounce_rate }}%</div>
+    <div class="card">Active Now: {{ stats.active }}</div>
+</div>
+
+<div class="card">
+<h3>Countries</h3>
+<ul>
+{% for c in stats.countries %}
+<li>{{ c[0] }} - {{ c[1] }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="card">
+<h3>Visitor IPs</h3>
+<ul>
+{% for ip in stats.ips %}
+<li>{{ ip[0] }} - Sessions: {{ ip[1] }}</li>
+{% endfor %}
+</ul>
+</div>
+
+
+
+</body>
+</html>
