@@ -91,8 +91,9 @@ def fingerprint_hash(data):
     return hashlib.sha256(base.encode()).hexdigest()
 
 def get_ip():
-    if request.headers.get("X-Forwarded-For"):
-        return request.headers.get("X-Forwarded-For").split(",")[0]
+    xfwd = request.headers.get("X-Forwarded-For")
+    if xfwd:
+        return xfwd.split(",")[0]
     return request.remote_addr
 
 # Dummy geo resolver (replace with real API later)
